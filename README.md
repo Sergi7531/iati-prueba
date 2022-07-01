@@ -22,14 +22,19 @@ Setting up the database will be easy:
 
     exit
 
-### Setup local environment:
+## Setup local environment:
 
-Rellenamos la base de datos:
+Migrate the models to the MySQL database:
 
     python3 manage.py makemigrations
     python3 manage.py migrate
+
+And load the products from the fixture:
+
     python3 manage.py loaddata products
 
-Y después de esto, podemos arrancar el servidor:
+After this, we can run the server and start the tests:
 
     python3 manage.py runserver
+
+##  
