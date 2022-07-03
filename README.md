@@ -180,15 +180,15 @@ This endpoint will return the cart and its' items.
 
 The cart is updated daily, thus meaning you will have to add products to the cart in order to see changes.
 
-Postman screenshot on how a valid POST request to this endpoint would look like:
-<br/><br/>
-![here](https://imgur.com/J1dfyvJ.png)
+This is how the cart would look like when some items are added to it:
+
+![](https://imgur.com/0N0QP9a.png)
 
 #### Cart (POST) `/addtocart/`:
 
 This endpoint will add a product to the cart.
 
-Postman screenshot on how a valid request would look like:
+Postman screenshot on how a valid POST request to this endpoint would look like:
 <br/><br/>
 ![here](https://imgur.com/J1dfyvJ.png)
 
