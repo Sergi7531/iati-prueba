@@ -180,15 +180,20 @@ This endpoint will return the cart and its' items.
 
 The cart is updated daily, thus meaning you will have to add products to the cart in order to see changes.
 
-Postman screenshot on how a valid POST request to this endpoint would look like:
-<br/><br/>
-![here](https://imgur.com/J1dfyvJ.png)
+This is how the cart would look like when some items are added to it:
+
+![](https://imgur.com/0N0QP9a.png)
 
 #### Cart (POST) `/addtocart/`:
 
 This endpoint will add a product to the cart.
 
-Postman screenshot on how a valid request would look like:
+Has 2 parameters:
+
+- type: The product type. It is either a 't-shirt' or a 'cap' (case insensitive)
+- product_id: The ID of the product (in this test, it's up to 5 because there are 5 products of each type)
+
+Postman screenshot on how a valid POST request to this endpoint would look like:
 <br/><br/>
 ![here](https://imgur.com/J1dfyvJ.png)
 
@@ -196,7 +201,7 @@ Postman screenshot on how a valid request would look like:
 
 This endpoint will checkout the products in the cart.
 
-As a consequence of requesting this endpoint, an e-mail will be sent to some random e-mail address.<br/>
+As a consequence of requesting this endpoint an e-mail will be sent to the established e-mail address.<br/>
 
 The e-mail address can be changed in line 146 of [views.py](./shoppingcart/views.py)
 
