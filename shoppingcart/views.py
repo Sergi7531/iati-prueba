@@ -4,6 +4,11 @@ from datetime import datetime
 from .models import Cap, TShirt, Cart, Product
 from django.forms.models import model_to_dict
 
+'''
+GET /catalog/
+Returns a list of all the products in the catalog (JSON format).
+'''
+
 
 def all_catalog(request):
     caps_serialized = list(Cap.objects.values())
@@ -14,6 +19,12 @@ def all_catalog(request):
     tshirts_serialized.sort(key=lambda x: x['catalog_inclusion_date'], reverse=False)
 
     return JsonResponse({'caps': caps_serialized, 't-shirts': tshirts_serialized})
+
+
+''' 
+    This method is used to get a product from the database and add it to the cart.
+    (It is used in the add_to_cart method as an auxiliary method)
+'''
 
 
 def get_product(is_cap, product_id, cart):
@@ -33,6 +44,15 @@ def get_product(is_cap, product_id, cart):
 
     cart.save()
     return HttpResponse('Añadido el producto ' + product.description + ' al carrito de la compra')
+
+
+'''
+    POST /addtocart/
+    Adds a product to the cart.
+    JSON POST parameters:
+    @param product_id: The ID of the product to add.
+    @param type: The type of the product to add.
+'''
 
 
 def add_to_cart(request):
@@ -63,7 +83,13 @@ def add_to_cart(request):
         return HttpResponse('Error: No se han especificado parámetros (POST).')
 
 
-# View for the cart:
+'''
+    GET /cart/
+    Adds a product to the cart.
+    JSON POST parameters:
+    @param product_id: The ID of the product to add.
+    @param type: The type of the product to add.
+'''
 
 def view_cart(request):
     if not Cart.objects.filter(creation_date=datetime.now().date()):
@@ -117,7 +143,8 @@ def buy_cart_items(request):
         'Your order',
         '',
         'iaticarrito@gmail.com',
-        ['sergidominguezrivas@gmail.com'],
+        # Change this to the email address you want to send the email to:
+        ['enteremailhere@gmail.com'],
         fail_silently=False,
         html_message=final_text
     )
