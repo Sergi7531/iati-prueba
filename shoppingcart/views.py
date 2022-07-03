@@ -91,6 +91,7 @@ def add_to_cart(request):
     @param type: The type of the product to add.
 '''
 
+
 def view_cart(request):
     if not Cart.objects.filter(creation_date=datetime.now().date()):
         return HttpResponse('Error: No cart today.')
@@ -139,14 +140,20 @@ def buy_cart_items(request):
 
     from django.core.mail import send_mail
 
-    send_mail(
-        'Your order',
-        '',
-        'iaticarrito@gmail.com',
-        # Change this to the email address you want to send the email to:
-        ['enteremailhere@gmail.com'],
-        fail_silently=False,
-        html_message=final_text
-    )
+    if caps or tshirts:
+        send_mail(
+            'Tu pedido en IATI compras',
+            '',
+            'iaticarrito@gmail.com',
+            # Change this to the email address you want to send the email to:
+            ['sergidominguezrivas@gmail.com'],
+            fail_silently=False,
+            html_message=final_text
+        )
 
-    return HttpResponse('Your order has been sent.')
+        cart.caps.clear()
+        cart.tshirts.clear()
+        cart.save()
+        return HttpResponse('Se ha procesado tu compra. En breves recibirás un correo de confirmación del pedido.')
+    else:
+        return HttpResponse('No hay objetos en el carrito.')
