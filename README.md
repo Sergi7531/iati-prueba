@@ -196,7 +196,7 @@ Postman screenshot on how a valid POST request to this endpoint would look like:
 
 This endpoint will checkout the products in the cart.
 
-As a consequence of requesting this endpoint, an e-mail will be sent to some random e-mail address.<br/>
+As a consequence of requesting this endpoint an e-mail will be sent to the established e-mail address.<br/>
 
 The e-mail address can be changed in line 146 of [views.py](./shoppingcart/views.py)
 
