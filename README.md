@@ -188,6 +188,11 @@ This is how the cart would look like when some items are added to it:
 
 This endpoint will add a product to the cart.
 
+Has 2 parameters:
+
+- type: The product type. It is either a 't-shirt' or a 'cap' (case insensitive)
+- product_id: The ID of the product (in this test, it's up to 5 because there are 5 products of each type)
+
 Postman screenshot on how a valid POST request to this endpoint would look like:
 <br/><br/>
 ![here](https://imgur.com/J1dfyvJ.png)
